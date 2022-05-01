@@ -1,0 +1,34 @@
+﻿@* So this is different from the index because there we passed a Category from the controller.
+	Now we are not passing a Category from the controller, but we still want to work on it
+	and access its properties.
+*@
+
+@* If you pass a model from the controller, it must match the model in the view.*@
+@model Category
+
+<form method="post" asp-action="Delete">  @* Refers to function name in controller *@
+	<input asp-for="Id" hidden />
+	<div class="border" p-3 mt-4">
+		<h2 class="text-primary">Delete Category</h2>
+		<hr />
+		@*<div asp-validation-summary="All"></div> @* Displays error messages at the top*@
+		<div class="mb-3">
+			<label asp-for="Name"></label>
+			<input asp-for="Name" disabled class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label asp-for="DisplayOrder"></label>
+			<input asp-for="DisplayOrder" disabled class="form-control" />
+		</div>
+		<button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+		<a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			Back to List
+		</a>
+	</div>
+</form>
+
+@section Scripts{
+@{
+	<partial name="_ValidationScriptsPartial" />
+}
+}
